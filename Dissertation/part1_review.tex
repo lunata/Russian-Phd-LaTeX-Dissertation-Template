@@ -31,10 +31,25 @@ https://arxiv.org/pdf/1810.07125.pdf
 %}
 
 
+\section{Обзор компьютерных программ для морфологической обработки}
 
-\section{Финский язык} \label{sect1_2}
+\subsection{Финский язык} \label{sect1_2}
 
 Статья о лемматизаторе FinnPos~\cite{silfverberg2016finnpos}.
 
 %https://github.com/mpsilfve/FinnPos
+
+\section{Europarl Corpus and Words2Grids}
+
+В работе~\cite{Fam2018tools} различают две структуры: \emph{Paradigm tables} 
+и \emph{Analogical grids}. 
+
+На языке Python разработана программа Words2Grids, которая по списку словоформ 
+создаёт Analogical grids, которые, в свою очередь, нужны для создания 
+таблиц склонений, то есть Paradigm tables.
+
+Эксперименты проводились на 11 языках в корпусе текстов Europarl. 
+Особняком стоят результаты по финскому (агглюнативному) языку (см. табл. 1 на с. 1063).
+
+
 
