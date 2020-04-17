@@ -1,0 +1,9 @@
+% жирная черта слева (или справа) от утверждения (таблица)
+% https://tex.stackexchange.com/a/256732/99685
+%\newcommand\thickPipe{!{\vrule width 4pt}}
+% arguments: text and width in cm
+\newcommand\textWithVerticalBar[2]{%
+   \begin{tabular}{!{\vrule width 4pt}p{#1}}%
+    #2%
+    \end{tabular}%
+}
