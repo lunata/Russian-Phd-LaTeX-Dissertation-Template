@@ -20,25 +20,38 @@
 Объём корпуса ВепКар составляет соответственно 2~677 текстов и 960~553 слов в текстах\footnote{ Данные на 23 апреля 2020~г. Cм. подробнее 
 \href{http://dictorpus.krc.karelia.ru/ru/stats/by\_corp}{http://dictorpus.krc.karelia.ru/ru/stats/by\_corp}.}.
 
+На рисунках \ref{fig:text_distr_by_corpus} и \ref{fig:text_distr_by_genre} показано распределение текстов по подкорпусам и жанрам для вепсского языка и наречий карельского языка\footnote{ Данные на 23 апреля 2020~г. Cм. подробнее 
+			\href{http://dictorpus.krc.karelia.ru/ru/corpus/corpus}{http://dictorpus.krc.karelia.ru/ru/corpus/corpus}.}.
 
-\todo{Яндекс-диск/Nata/Диссертация/pix/Количество текстов по подкорпусам}
-Рис. Количество текстов по подкорпусам
-\todo{Todo: построить и добавить картинку со страницы:}\footnote{ Данные на 23 апреля 2020~г. Cм. подробнее 
-\href{http://dictorpus.krc.karelia.ru/ru/corpus/corpus}{http://dictorpus.krc.karelia.ru/ru/corpus/corpus}.}
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth,keepaspectratio=true]{text_distr_by_corpus.png}
+    \caption{Распределение текстов по подкорпусам (вепсский язык и наречия карельского языка).}
+    \label{fig:text_distr_by_corpus}
+\end{figure}
+%\bigskip
 
-\bigskip
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth,keepaspectratio=true]{text_distr_by_genre.png}
+    \caption{Распределение текстов по жанрам (вепсский язык и наречия карельского языка).}
+    \label{fig:text_distr_by_genre}
+\end{figure}
 
-Анализ временной динамики корпуса ВепКар: 
-% select `date`, count(*) from events where id in (select event_id from texts) group by `date` order by `date`;
-% select count(*) from texts where event_id is null; 
-\todo{Построить гистограмму с годами записи текстов, см. рис. 2: http://textualheritage.org/content/view/398/188/lang,russian/ }.
+Анализ временной динамики корпуса ВепКар показан на рисунке \ref{fig:text_distribution_by_date}. 2041 текстов (86,67\%) не имеют информации о дате записи.
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth,keepaspectratio=true]{text_distribution_by_date.png}
+    \caption{Распределение числа текстов по годам.}
+    \label{fig:text_distribution_by_date}
+\end{figure}
 
-\todo{Указать долю текстов с неизвестной датой записи.}.
 
-\bigskip
 
-Своевременно ли говорить о сбалансированности и представительности корпуса ВепКар? 
-Ответом может послужить информация о доле слов из словаря, употреблённых в текстах корпуса. 
+%\bigskip
+
+Своевременно ли говорить о сбалансированности и представительности корпуса ВепКар? Вопрос остаётся открытым, нужны дополнительные исследования.
+%Ответом может послужить информация о доле слов из словаря, употреблённых в текстах корпуса. 
 \todo{TODO: Подсчитать долю / процент слов (для каждого из языков), которые встречаются в текстах. Процент + абсолютное число слов словаря в текстах.}
 (Добавить эту статистику в корпус?)
 
