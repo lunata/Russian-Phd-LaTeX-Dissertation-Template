@@ -57,6 +57,9 @@
     }{}
     \usepackage[utf8]{inputenc}[2014/04/30]         % Кодировка utf8
     \usepackage[english, russian]{babel}[2014/03/24]% Языки: русский, английский
+    \makeatletter\AtBeginDocument{\let\@elt\relax}\makeatother % bug in Babel :( https://github.com/latex3/babel/issues/51#issuecomment-589971931
+
+
     \ifnumequal{\value{usealtfont}}{2}{
         % http://dxdy.ru/post1238763.html#p1238763
         \usepackage[scaled=0.960]{XCharter}[2017/12/19] % Подключение русифицированных шрифтов XCharter
