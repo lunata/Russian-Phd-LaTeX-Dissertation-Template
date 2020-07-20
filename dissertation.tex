@@ -22,11 +22,23 @@
 \input{Dissertation/userstyles_aka} % Мои стили
 
 %%% Библиография. Выбор движка для реализации %%%
+% Здесь только проверка установленного ключа. Сама настройка выбора движка
+% размещена в common/setup.tex
 \ifnumequal{\value{bibliosel}}{0}{%
     \input{biblio/predefined}   % Встроенная реализация с загрузкой файла через движок bibtex8
 }{
     \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
 }
+
+% Вывести информацию о выбранных опциях в лог сборки
+\typeout{Selected options:}
+\typeout{Draft mode: \arabic{draft}}
+\typeout{Font: \arabic{fontfamily}}
+\typeout{AltFont: \arabic{usealtfont}}
+\typeout{Bibliography backend: \arabic{bibliosel}}
+\typeout{Precompile images: \arabic{imgprecompile}}
+% Вывести информацию о версиях используемых библиотек в лог сборки
+\listfiles
 
 %%% Управление компиляцией отдельных частей диссертации %%%
 % Необходимо сначала иметь полностью скомпилированный документ, чтобы все
@@ -48,6 +60,10 @@
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
 \include{Dissertation/title}           % Титульный лист
 \include{Dissertation/contents}        % Оглавление
+
+\ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}
+\ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
+
 \include{Dissertation/introduction}    % Введение
 
 \include{Dissertation/part_review}     % Глава "Обзор"
@@ -62,8 +78,10 @@
 \include{Dissertation/corpora_review/corpora_review} 
 \include{Dissertation/part_review_comp_morphology} % Раздел "Компьютерная морфология"
 \include{Dissertation/part_review_automaton}       % Обзор: Конечный преобразователь (трансдьюсер) и конечные автоматы
-
-\include{Dissertation/part_problem}     % Глава  "Постановка задачи"
+%
+% Постановка задачи
+\include{Dissertation/problem_statement/problem}
+%
 \include{Dissertation/part_models}      % Глава с моделями
 \include{Dissertation/part_architecture} % Глава "Архитектура Dictorpus"
 \include{Dissertation/part2}           % Глава 2
@@ -74,6 +92,8 @@
 \include{Dissertation/references}      % Список литературы
 \include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
 
+\setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
+
 %%% Настройки для приложений
 \appendix
 % Оформление заголовков приложений ближе к ГОСТ:
@@ -82,5 +102,7 @@
 \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
 \include{Dissertation/appendix}        % Приложения
+
+\setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
 
 \end{document}
