@@ -4,8 +4,33 @@
 %%% Загрузка пакета с основными настройками %%%
 \makeatletter
 \ifnumequal{\value{draft}}{0}{% Чистовик
+
+\ifnumequal{\value{authoryear}}{1}{% автор, год в ссылках (отклонения от ГОСТ, но читабельно)
+
+\usepackage[%
+backend=biber,
+bibencoding=utf8,
+sorting=none,
+style=authoryear,
+language=autobib,
+autolang=other,
+clearlang=true,
+defernumbers=true,
+sortcites=true,
+doi=true,
+isbn=false,
+]{biblatex}
+
+% When you just want to put around braces in your cite, use:
+\usepackage{letltxmacro}\LetLtxMacro{\cite}{\parencite} 
+% see https://tex.stackexchange.com/a/318312/99685
+
+}{% else authoryear <> 1
+% цифры в ссылках [1], [2]... (по ГОСТу)
+
 \usepackage[%
 backend=biber,% движок
+%backend=bibtex,% движок
 bibencoding=utf8,% кодировка bib файла
 sorting=none,% настройка сортировки списка литературы
 style=gost-numeric,% стиль цитирования и библиографии (по ГОСТ)
@@ -18,6 +43,8 @@ doi=true,% Показывать или нет ссылки на DOI
 isbn=false,% Показывать или нет ISBN, ISSN, ISRN
 maxnames=99,
 ]{biblatex}[2016/09/17]
+} % eo authoryear
+
 \ltx@iffilelater{biblatex-gost.def}{2017/05/03}%
 {\toggletrue{bbx:gostbibliography}%
 \renewcommand*{\revsdnamepunct}{\addcomma}}{}
