@@ -1,0 +1,53 @@
+
+\TODO{Перевести данные в табличку с размерами train, dev и test set для языков 
+ВепКар на SIGMORPHON 2020
+И на основе этого сделать вывод, какие из наших языков мало- или много- 
+ресурсные.}
+
+SIGMORPHON 2020 task 0
+
+vep  train 94\,395 dev 13\,320 test 26\,422
+
+krl  train 80\,216 dev 11\,225 test 22\,290
+
+olo  train 43\,936 dev 6\,260 test 12\,515
+
+lud  train 294 dev 41 test 82
+
+\begin{table}
+%\begin{adjustbox}{width=1\textwidth}
+\small
+\centering
+\small
+\begin{tabular}{c|r|r|r|r|r|r|>{\hspace{2em}}r|r|>{\hspace{2em}}r|r}
+\toprule
+%\multicolumn{1}{c}{\textbf{Lang}}&\multicolumn{3}{c}{\textbf{Total}}\\
+\textbf{Язык / Наречие} & \textbf{Код языка} & \textbf{Train} & \textbf{Dev} & \textbf{Test} \\
+%\cmidrule(lr){1-1} \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+% &Train& Dev & Test \\
+
+\midrule
+Карельский & krl&80216&11225&22290\\
+ lud&294&41&82\\
+ olo&43936&6260&12515\\
+ vep&94395&13320&26422\\
+%\midrule
+%est&26728&3820&7637&2.7&0.4&0.8&6.1&5.1&22.4&11.6\\
+%fin&99403&14201&28401&0.0&0.0&0.0&0.0&0.0&32.6&17.2\\
+%izh&763&112&224&0.0&0.0&0.0&0.0&0.0&42.9&22.3\\
+%liv&2787&398&802&0.0&0.0&0.0&0.0&0.0&40.7&24.1\\
+%\midrule
+%ang&29270&4122&8197&11.8&1.8&3.4&21.6&21.9&35.1&21.3\\
+%aze&5602&801&1601&11.9&1.9&4.0&22.3&20.9&31.5&20.2\\
+%cre&4571&584&1174&18.5&2.1&4.9&29.8&29.6&5.5&2.7\\
+%dan&17852&2550&5101&16.5&2.5&5.0&34.5&32.9&71.4&51.8\\
+%nob&13263&1929&3830&10.5&1.8&3.1&18.5&19.7&80.5&70.5\\
+%pei&10017&1349&2636&15.8&2.6&4.9&21.5&21.4&9.1&4.7\\
+\bottomrule
+\end{tabular}
+%\end{adjustbox}
+\caption{Number of samples in training, development, test sets, as well as statistics on systematic errors (inconsistency) and percentage of samples with lemmata observed in the training set.
+(VepKar languages, other Uralic languaes and languages with the highest rates of inconsistency, todo ref to SIGMORPHON2020)
+}
+\label{tab:lang-stats}
+\end{table}
