@@ -195,6 +195,44 @@ Armadillo & frozen      & 8.99       \\
 для малоресурсных языков~\cite[2820]{Cruz-Anastasopoulos-Stump2020Chatino}.
 
 
+%Let us describe several works devoted to the development of morphological analyzers for the Veps and Karelian languages.
+Опишем несколько работ, посвящённых разработке морфологических анализаторов вепсского и карельского языков.
+\begin{itemize}
+%  \item The Giellatekno language research group is mainly engaged in low-resource languages, the project covers about 50 languages~\cite{Moshagen2014}. Our project has something in common with the work of Giellatekno in that (1) we work with low-resource languages, (2) we develop software and data with open licenses.
+  \item Основным предметом исследования языковой группы Giellatekno 
+      являются малоресурсные языки.  
+        Разработаны лингвистические ресурсы 
+        для порядка 50 языков~\cite{Moshagen2014}. 
+        Общее в нашей работе с исследователям из Giellatekno в том, что 
+        (1) мы также работаем с малоресурсными языками, 
+        (2) мы разрабатываем программное обеспечение 
+        и публикуем словари и корпуса текстов с открытой лицензией.
+      Ключевую роль в разрабатываемых в Giellatekno языковых технологиях 
+        играют формальные подходы. 
+        В Giellatekno работают с морфологически богатыми языками.
+        Для анализа и генерации словоформ (морфологический синтез и анализ) 
+        они используют конечные преобразователи 
+        (FST или finite-state transducers)~\cite{Moshagen2014}. 
+% 
+%  \item There is a texts and words processing library for the Uralic languages called UralicNLP~\cite{UralicNLP2019Hamalainen}.
+%  This Python library provides interface to such Giellatekno tools as FST for processing morphology and constraint grammar for syntax. 
+%  The UralicNLP library lemmatizes words in 30 Finno-Ugric languages and dialects including the Livvi dialect of the Karelian language (\textit{olo} -- language code).
+  \item Для обработки слов и текстов на уральских языках разработана 
+      библиотека UralicNLP~\cite{UralicNLP2019Hamalainen}. 
+        Эта библиотека на языка Python предоставляет интерфейс 
+        к конечным преобразователям Giellatekno 
+        и к грамматикам ограничений (constraint grammar) той же системы. 
+        Программный код библиотеки доступен 
+        онлайн\footnote{См. \url{https://github.com/mikahama/uralicNLP}}.
+        Библиотека UralicNLP выполняет лемматизацию слов 
+        для 30 финно-угорских языков, включая 
+        ливвиковское наречие карельского языка (языковой код \textit{olo}).
+\end{itemize}
+
+
+
+
+
 \bigskip
 По точности результаты по языку Чатино значительно хуже
 средних результатов соревнования ``SIGMORPHON 2019'' по 66 языкам.
