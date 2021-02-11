@@ -1,0 +1,84 @@
+\section{Морфологическая и семантическая разметка корпуса ВепКар} \label{sect_exp_tag_vepkar}
+
+\subsection{Организация данных и разметка текста в корпусе ВепКар} \label{sect_exp_tag_vepkar_data_org}
+
+Одно из направлений работ в рамках развития Открытого корпуса вепсского и карельского языков связано с автоматизацией грамматической разметки вепсских и карельских текстов. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth,keepaspectratio=true]{vepkar_structure_v5-b-ru_with_tagging.png}
+\caption{Организация данных и разметка текста в корпуса ВепКар, 
+числовые данные приведены по всем языкам и диалектам. Данные на 10 февраля 2021 г.} \label{fig:corpus_manager_tagging}
+\end{figure}
+
+Корпусный менеджер обслуживает  словарь и корпус текстов (Рис.~\ref{fig:corpus_manager_tagging}). В текстах выделены границы предложений, в предложениях размечены слова (токены).  Пример разметки:
+\begin{lstlisting}[language=HTML]
+<s id="17"><w id="141">Tulow</w> <w id="142">starikku</w> <w id="143">pertih</w>, <w id="144">tuattah</w> <w id="145">se</w>.</s>
+\end{lstlisting}
+
+Словарь включает леммы, связанные со значениями, и тройками словоформа--набор грамматических признаков (грамсет\footnote{ \textbf{gramset} -- \textbf{SET} of \textbf{GRAM}matical features})--диалект. 
+
+Система ВепКар при разметке текста автоматически ищет в словаре леммы и словоформы, совпадающие в написании\footnote{ При этом опускаются знаки смягчения (апострофы) и заменяются некоторых карельские буквы (в диалектных текстах встречаются буквы, которых нет в современном алфавите)} с токенами. Это первый этап (\RNum{1}) разметки текста, непредставленный на рисунке~\ref{fig:corpus_manager_tagging}.  
+
+\begin{enumerate}
+\item \textbf{Семантическая разметка}. 
+Для найденных в словаре словоформ выбираются связанные с ними леммы (\RNum{2} на рис.~\ref{fig:corpus_manager_tagging}), потом собираются все значения лемм (\RNum{3}) и устанавливаются семантические связи между словами из текста и значениями лемм (с пометкой “не проверено”) (\RNum{4}). 
+
+%\begin{center}token (word) $\leftrightarrow$ word form $\leftrightarrow$ lemmas $\leftrightarrow$ meanings\end{center}
+
+\begin{tikzpicture}
+% TODO mbrace, examples:
+% http://www.texample.net/tikz/examples/model-physics/
+% http://www.texample.net/tikz/examples/assignment-structure/
+% https://ipfs-sec.stackexchange.cloudflare-ipfs.com/tex/A/question/195131.html
+
+%Nodes
+\node (token)               {токены (слова)};
+\node (wf) [right=of token] {словоформы};
+\node (lemma) [right=of wf] {леммы};
+\node (meaning) [right=of lemma] {значения};
+
+%Lines
+\draw[<->] (token.east) -- node[above] {\RNum{1}} (wf.west);
+\draw[<->] (lemma.east) -- node[above] {\RNum{3}} (meaning.west);
+\draw[<->] (wf.east) -- node[above] {\RNum{2}} (lemma.west);
+\path[<->,red] (token.south) edge [bend right=13] node[above] {этап \RNum{4} не проверен} (meaning.south);
+\end{tikzpicture}
+
+%\begin{center}token (word) $\leftrightarrow$ word form $\leftrightarrow$ lemmas $\leftrightarrow$ meanings\end{center}
+
+Задача эксперта-лингвиста -- проверить эти связи и подтвердить их корректность, либо выбрать верную связь из нескольких возможных, либо вручную добавить новую словоформу, лемму или значение. 
+
+Когда редактор (эксперт) кликает на токен в тексте, появляется выпадающий список всех значений найденных лемм. Редактор выбирает правильную лемму и значение (Рис.~\ref{fig:text_tagging_by_editor}\footnote{
+Полный текст доступен онлайн в корпусе ВепКар. См. страницу корпуса с этим текстом \url{http://dictorpus.krc.karelia.ru/en/corpus/text/494}.}). 
+
+% samarialaine: http://dictorpus.krc.karelia.ru/en/corpus/text/494
+% 
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth,keepaspectratio=true]{text_tagging_by_editor.png}
+\caption{Параллельный перевод текстов Библии: вепсский и русский языки. 
+При клике в тексте по слову Opendai всплывает меню. 
+Меню содержит значение для существительного "учитель" и пять значений для глагола. 
+Когда редактор выбирает одно из значений, кликнув на знак "+", то тем самым связывает токен и значение леммы ({\color{red}этап \RNum{4} проверен}).}
+ \label{fig:text_tagging_by_editor}
+\end{figure}
+
+\item \textbf{Морфологическая разметка}. 
+Для найденных словоформ выбираются связанные с ними грамсеты  (\RNum{5}) и устанавливаются морфологические связи (\RNum{6}) между словами из текста и парами ``словоформа — грамсет'' (Fig.~\ref{fig:text_tagging_by_editor}). 
+Задача эксперта -- выбрать правильный грамсет.
+
+\begin{tikzpicture}
+%Nodes
+\node (token)               {токены (слова)};
+\node (wf) [right=of token] {словоформы};
+\node (gramset) [right=of wf] {грамсеты};
+
+%Lines
+\draw[<->] (token.east) -- node[above] {\RNum{1}} (wf.west);
+\draw[<->] (wf.east) -- node[above] {\RNum{5}} (gramset.west);
+\path[<->,red] (token.south) edge [bend right=13] node[above] {\RNum{6}} (gramset.south);
+\end{tikzpicture}
+
+\end{enumerate}
+
