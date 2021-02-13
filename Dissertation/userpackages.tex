@@ -48,3 +48,46 @@
 
 \usepackage{todonotes}
 %\usepackage[disable]{todonotes}
+
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+% Rotation certain pages into landscape/portrait mode
+% https://tex.stackexchange.com/a/354
+\usepackage{pdflscape}
+
+% \textrm{} will not be written in italic
+\usepackage{etoolbox}
+\AtBeginEnvironment{algorithm}{\SetArgSty{textrm}}
+
+% Black square
+\usepackage{amsmath}
+
+% Define color
+\usepackage{xcolor}
+\definecolor{tab:blue}{RGB}{31, 119, 180}
+\definecolor{tab:pink}{RGB}{255, 128, 128}
+\definecolor{tab:magenta}{RGB}{255, 128, 250}
+\definecolor{tab:orange}{RGB}{255, 128, 0}
+\definecolor{tab:yellow}{RGB}{255, 255, 128}
+\definecolor{tab:cyan}{RGB}{152, 191, 218}
+\definecolor{tab:grey}{RGB}{192, 192, 192}
+
+% Color underlines with breaks for descenders, based on:
+% https://tex.stackexchange.com/a/75406
+% https://tex.stackexchange.com/a/24771
+% https://tex.stackexchange.com/a/321235
+\usepackage{soul}
+\usepackage[outline]{contour}
+\newcommand \colorindicator[2]{%
+  \begingroup%
+  \setul{0.25ex}{0.4ex}%
+  \contourlength{0.2ex}%
+  \setulcolor{#1}%
+  \ul{{\phantom{#2}}}\llap{\contour{white}{#2}} \textcolor{#1}{\tiny{$\blacksquare$}}%
+  \endgroup%
+}
+
+% list https://en.wikibooks.org/wiki/LaTeX/List_Structures#Some_special_lists
+\usepackage{blindtext}
+\usepackage{scrextend}
+\addtokomafont{labelinglabel}{\sffamily}

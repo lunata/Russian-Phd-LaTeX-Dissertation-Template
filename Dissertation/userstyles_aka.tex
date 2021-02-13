@@ -37,6 +37,35 @@
 % Roman numbers
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 
+% blue small text comments
+\newcommand{\bluecomment}[1]{%
+    \text{\small{\textcolor{blue}{#1}}}}
+
+% a forced line break inside a table cell
+% https://tex.stackexchange.com/a/19678/99685
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+% II (concatenation) summation symbols
+% https://tex.stackexchange.com/a/20681/99685
+%\newcommand*\concat{\mathbin{\|}}
+\newcommand*\concat{\mathbin{+}}
+
+% pleasant look of 'pos' within math mode
+\newcommand*\pos{\text{pos}}
+\newcommand*\pend{\text{pend}}
+
+
+%% algorithm2e %%%%%%%
+%\SetKwRepeat{Do}{do}{while} % https://tex.stackexchange.com/a/212302/99685
+\SetKwComment{Comment}{}{}
+
+% colored and small comments: https://tex.stackexchange.com/a/162208/99685
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+%%%%%%% eo algorithm2e 
+
+
 \reversemarginpar
 \setlength{\marginparwidth}{2cm}
 %
