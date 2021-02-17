@@ -65,46 +65,29 @@
 \ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
 
 \include{Dissertation/introduction}    % Введение
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Введение в главу "Обзор"
-\include{Dissertation/review/intro}     
-% 
-% Корпусная лингвистика
-\include{Dissertation/review/corpus_linguistics} 
-%
-% Репрезентативность и сбалансированность корпуса, достоверность данных
-\include{Dissertation/review/corpus_representativeness} 
-%
-% Примеры лингвистических корпусов
-\include{Dissertation/review/corpora_review} 
-%
-% Компьютерная морфология
-\include{Dissertation/review/morphology}
-%
-% Конечный преобразователь (трансдьюсер) и конечные автоматы
-\include{Dissertation/review/fst_automaton}
-%
-% Нейронные сети
-\include{Dissertation/review/neural_review} 
-%
-% Постановка задачи
-\include{Dissertation/problem_statement/problem}
-%
-% Глава с моделями
-\include{Dissertation/models/part_models} 
-%
-% Глава с алгоритмами
-\include{Dissertation/algorithms/pos_tagging} 
-%
-% Комплекс компьютерных программ
+
+% 1. Введение в главу "Обзор"
+\include{Dissertation/part_review}     
+ 
+% 2. Постановка задачи
+\include{Dissertation/part_problem_statement}
+
+% 3. Глава с моделями
+\include{Dissertation/part_models} 
+
+% 4. Глава с алгоритмами
+\include{Dissertation/part_algorithms} 
+
+% 5. Комплекс компьютерных программ
 \include{Dissertation/part_complex_software} 
 
-% Эксперименты
+% 6. Эксперименты
 \include{Dissertation/part_experiments} 
 
-\include{Dissertation/part3}           % Глава 3
+% 7. Анализ результатов
+\include{Dissertation/part_results}   
+
+
 \include{Dissertation/conclusion}      % Заключение
 \include{Dissertation/acronyms}        % Список сокращений и условных обозначений
 \include{Dissertation/dictionary}      % Словарь терминов
